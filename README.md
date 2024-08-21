@@ -2,5 +2,5 @@
 
 Docentes:
 
-1. Martin Radovitzky - mr246579@fi365.ort.edu.uy
-2. Marcos Buydid - marcos.buydid@gmail.com
+1. **Martin Radovitzky - mr246579@fi365.ort.edu.uy**
+2. **Marcos Buydid - marcos.buydid@gmail.com**
