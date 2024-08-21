@@ -2,5 +2,5 @@
 
 Docentes:
 
-1. martin radovitzky - mr246579@fi365.ort.edu.uy
-2. ignacio azaretto - ignacioazaso@gmail.com
+1. **martin radovitzky - mr246579@fi365.ort.edu.uy**
+2. **marcos buydid - marcos.buydid@gmail.com**
