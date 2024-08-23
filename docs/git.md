@@ -43,3 +43,15 @@ Ramas Features: Rama que se genera a partir de development, donde cada feature/f
 	b.Es más fácil relacionar requerimientos funcionalidades con el código donde fueron implementadas
 - Reduce el % de conflictos
 - Volver al pasado en el código se vuelve más simple
+
+## Ramas Bugfix:
+Ramas Bugfix: Si bien este tipo de ramas no estan comprendidas dentro del flujo de trabajo de Gitflow, son utiles cuando se
+debe corregir algun tipo de bug en la rama de develop. Algunos ejemplos:
+- bugfix/footer-styling
+- bugfix/user-logout
+
+## Ventajas
+- Cada correccion se asocia a una rama especifica:
+	a.El código se vuelve más simple de revisar previo a la integracion en otra rama
+	b.Es más facil de hacer un rollback en caso que la solucion al bug provoque errores en otro lugar
+- Minimiza el porcentaje de conflictos
