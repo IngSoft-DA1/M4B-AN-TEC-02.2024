@@ -1,14 +1,24 @@
 # Framework
 Un framework es una aplicación incompleta, que provee funcionalidad genérica con el objetivo de permitirle al usuario escribir software que cumpla un propósito en particular.​
+Ofrece varias ventajas:
+- Productividad Mejorada: al brindar herramientas y bibliotecas ya construidas que simplifican tareas comunes, reduciendo asi el tiempo necesario para escribir código desde cero.
+- Consistencia y Estándares: ya que garantiza que el código siga ciertos patrones y estándares recomendados, facilitando asi la comprensión y el mantenimiento del mismo a lo largo del tiempo.
+- Escalabilidad: ya que los frameworks están diseñados para manejar aplicaciones a gran escala, permitiendo el desarrollo de aplicaciones que pueden crecer y adaptarse a cambios en la carga y el rendimiento. Esto incluye la capacidad de usar arquitecturas modernas como microservicios y contenedores.
+- Reutilización de Código: al permitir la reutilización de componentes y módulos, lo que ayuda a reducir la redundancia y facilitar el mantenimiento. Los desarrolladores pueden utilizar bibliotecas y módulos ya existentes en lugar de desarrollar funcionalidades desde cero.
 
 ![image](https://github.com/user-attachments/assets/0b18477b-4434-4973-924c-476d9001f6a1)
 
-## ¿Qué es  .Net?
-- **Framework** de desarrollo construido por Microsoft que corre sobre el sistema operativo de **Microsoft**.
-- .Net soporta soporta múltiples lenguajes. *c#, f#, Visual basic, C++* y más.
+## ¿Qué es .Net?
+- **Framework** de desarrollo construido por Microsoft que corre sobre sistemas operativos propios de **Microsoft**.
+- .Net soporta soporta múltiples lenguajes. *c#, f#, Visual basic*.
+- Contiene bibilotecas para trabajar con fechas, archivos, strings y más.
+
+## ¿Qué es ASP.Net?
+- **Marco Web** creado por **Microsoft** para el desarrollo de servicios y aplicaciones web modernas utilizando .NET.
+- ASP es la abreviatura de Active Server Pages.
   
 ## ¿Qué es .NetCore?
-- Al Igual que .Net es un **Framework** construido por Microsoft, pero tiene como diferencia que es multiplataforma, es decir puede correr tanto en Windows omo macOS y Linux. 
+- Al Igual que .Net es un **Framework** construido por Microsoft, pero tiene como diferencia que es multiplataforma, es decir puede correr tanto en Windows como en macOS y Linux. 
 - En este curso utilizaremos .NetCore
   
 # Librerías de clases base (BCL)​  
@@ -20,15 +30,14 @@ Un framework es una aplicación incompleta, que provee funcionalidad genérica
 
 ## Ambiente de ejecución CLR (*Common language runtime*)
 - Es un runtime que puede ser utilizado por distintos lenguajes de programación. Las funcionalidades que el CLR provee (como manejo de memoria, manejo de excepciones, sincronización de threads, seguridad, entre otras) son accesibles por cualquier lenguaje que le sea compatible.​
-- Es más el CLR no sabe el lenguaje del código mientras siempre que el compilador del mismo genere un lenguaje intermedio que el CLR pueda interpretar.
-- Intermediate Language: es el código que luego el CLR maneja en tiempo de ejecución​
+- El CLR no sabe el lenguaje del código siempre que el compilador del mismo genere un lenguaje intermedio que el CLR pueda interpretar.
+- Intermediate Language: es el código que luego el CLR maneja en tiempo de ejecución​ por un proceso conocido como JIT (Just in Time) compilation.
 ### Flujo:
 ![image](https://github.com/user-attachments/assets/1a2aacd4-a398-4348-a205-0298c9f06b6a)
 
-
 ## Metadata:
-- La Metadata puede ser entendida como información que describe que es lo que está definido en cada módulo (tipos y métodos)​
-Tiene múltiples usos, algunos ejemplos son:
+- La Metadata puede ser entendida como información que describe que es lo que está definido en cada módulo (tipos y métodos)​. Se almacena en el archivo de ensamblado junto con el código ejecutable.
+Tiene múltiples usos, algunos de ellos son:
 - Visual Studio utiliza la metadata para el uso de intellisense, es decir sugerir métodos disponibles y los parámetros requeridos.​
 - Serialización y deserialización de objetos para transferencia entre máquinas remotas.​
 - Determinación del tiempo de vida de un objeto por el Garbage Collector​
