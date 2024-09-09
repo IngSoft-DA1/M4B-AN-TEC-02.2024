@@ -14,7 +14,7 @@ namespace Dominio
 
         public override void Encender()
         {
-            Console.WriteLine("Encenciendo auto con"+" "+ $"{CantPuertas}"+" "+"puertas"+" "+"y color de chasis"+" "+$"{ColorChasis}");
+            Console.WriteLine($"Encenciendo auto con {CantPuertas} puertas y color de chasis {ColorChasis}.");
         }
     }
 }
