@@ -491,3 +491,6 @@ FodyWeavers.xsd
 # Additional files built by Visual Studio
 
 # End of https://www.toptal.com/developers/gitignore/api/visualstudio,rider,dotnetcore
+Automotive/Automotive/.idea/.idea.Automotive/.idea
+Automotive/Program/.idea/.idea.Program/.idea
+Automotive/DA1/.idea/.idea.DA1/.idea
