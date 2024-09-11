@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DA1", "DA1\DA1.csproj", "{EC022546-1FA5-4336-A121-3B17B66B9A6A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Generics", "Generics\Generics.csproj", "{DA6E534E-DE4F-4D2C-A48C-137F12234F64}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EC022546-1FA5-4336-A121-3B17B66B9A6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC022546-1FA5-4336-A121-3B17B66B9A6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC022546-1FA5-4336-A121-3B17B66B9A6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC022546-1FA5-4336-A121-3B17B66B9A6A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA6E534E-DE4F-4D2C-A48C-137F12234F64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA6E534E-DE4F-4D2C-A48C-137F12234F64}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA6E534E-DE4F-4D2C-A48C-137F12234F64}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA6E534E-DE4F-4D2C-A48C-137F12234F64}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
