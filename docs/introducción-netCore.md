@@ -260,8 +260,8 @@ public class Truck : Vehicle
 3. Agregar una clase Vehículo al proyecto​
 4. La clase deberá tener 
 	1. Dos Properties; ​  
-		1. tires : int
-		2. color : string​
+		1. DoorQuantity: int
+		2. ChasisColor : string​
 	2.  Un método Encender que no tendrá comportamiento​
 5. Agregar dos clases Auto y Camioneta (que son Vehiculo) ​ 
 6. Definirles aquí el método Encender que imprime en consola:​
@@ -383,4 +383,38 @@ void AddNumbers(int number, int numberb, out int result)
 result = number + numberb;
 }
 ```
+## Generics
+- Generics introduce el concepto de parámetros de tipo en .NET. 
+- Permiten diseñar clases y métodos que difieren la especificación de uno o más parámetros de tipo hasta que utilice la clase o método en el código. 
+- Por ejemplo:
+```cs
+public class GenericList<T>
+{
+    public void Add(T input) { }
+}
 
+class TestGenericList
+{
+    private class ExampleClass { }
+    static void Main()
+    {
+        GenericList<int> intList = new GenericList<int>();
+        intList.Add(1);
+
+        GenericList<string> stringList = new GenericList<string>();
+        stringList.Add("Hello Word");
+    }
+}
+```
+## Interfaz
+- Una interfaz es un contrato. Especifica las acciones que debe realizar un objeto pero no especifica como.
+- Quien implementa la interfaz define el comportamiento deseado. 
+- No se puede crear una instancia de una interfaz directamente. Los metodos contenidos en ella se implementan
+a traves de la clase o estructura que implementa dicha interfaz.
+- Pueden tener properties
+- Presenta diferentes ventajas frente a la herencia:
+1. Promueven el desacoplamiento ya que a diferencia de la herencia las clases que implementan una interfaz definen 
+el comportamiento deseado sin necesidad de acoplarse al comportamiento de una clase padre.
+2. Una clase puede implementar múltiples interfaces pero solo heredar de una única clase.
+3. Las interfaces permiten el uso del polimorfismo de manera flexible. Se puede tener una colección de diferentes tipos 
+de objetos que implementan la misma interfaz y tratarlos de manera uniforme.
