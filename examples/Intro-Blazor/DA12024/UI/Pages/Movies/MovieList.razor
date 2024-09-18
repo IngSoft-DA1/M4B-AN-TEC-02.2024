@@ -1,0 +1,45 @@
+﻿@page "/movies"
+@using BusinessLogic
+@using BusinessLogic.Models
+@inject MovieLogic MovieLogic
+
+<h1>Movie List</h1>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Title</th>
+        <th>Director</th>
+        <th>Release-Date</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var movie in movies)
+    {
+    <tr>
+        <td>@movie.Title</td>
+        <td>@movie.Director</td>
+        <td>@movie.ReleaseDate.Year/@movie.ReleaseDate.Month/@movie.ReleaseDate.Day</td>
+        <td><button type="button" class="btn btn-primary">Edit</button></td>
+        <td><button type="button" class="btn btn-danger" @onclick="() => OnDelete(movie.Title)">Delete</button></td>
+    </tr>
+    }
+    </tbody>
+</table>
+
+
+
+@code {
+    private List<Movie> movies;
+    protected override void OnInitialized()
+    {
+        movies = MovieLogic.GetMovies();
+    }
+
+    private void OnDelete(String title)
+    {
+        MovieLogic.DeleteMovie(title);
+    }
+}
