@@ -20,24 +20,31 @@ public class MovieLogic: IMovieLogic
 
     public void AddMovie(Movie movie)
     {
-        if (String.IsNullOrEmpty(movie.Title))
-        {
-            throw new ArgumentException("Movie title cannot be null or empty");
-        }
-        if (String.IsNullOrEmpty(movie.Director))
-        {
-            throw new ArgumentException("Movie director cannot be null or empty");
-        }
-        
         ValidateMovieTitle(movie.Title);
         _memoryDB.Movies.Add(movie);
     }
 
     public void DeleteMovie(string title)
     {
-        Movie movie = FindMovieByTitle(title);
+        Movie movie = SearchMovieByTitle(title);
         _memoryDB.Movies.Remove(movie);
     }
+
+    public void UpdateMovie(Movie movieToUpdate)
+    {
+        var movieToUpdateIndex = _memoryDB.Movies.IndexOf(_memoryDB.Movies.Find(m => m.Title == movieToUpdate.Title));
+        _memoryDB.Movies[movieToUpdateIndex] = movieToUpdate;
+    }
+
+    public Movie SearchMovieByTitle(String title)
+        {
+            Movie movie = _memoryDB.Movies.FirstOrDefault(movie => movie.Title == title);
+            if (movie == null)
+            {
+                throw new ArgumentException("Cannot find movie with this title");
+            }
+            return movie;
+        }
 
     private void ValidateMovieTitle(String title)
     {
@@ -48,15 +55,5 @@ public class MovieLogic: IMovieLogic
                 throw new ArgumentException("Movie title already exists");
             }
         }
-    }
-    
-    private Movie FindMovieByTitle(String title)
-    {
-        Movie movie = _memoryDB.Movies.FirstOrDefault(movie => movie.Title == title);
-        if (movie == null)
-        {
-            throw new ArgumentException("Cannot find movie with this title");
-        }
-        return movie;
     }
 }

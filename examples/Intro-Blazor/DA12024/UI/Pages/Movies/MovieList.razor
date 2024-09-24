@@ -2,6 +2,7 @@
 @using BusinessLogic
 @using BusinessLogic.Models
 @inject MovieLogic MovieLogic
+@inject NavigationManager NavigationManager
 
 <h1>Movie List</h1>
 
@@ -22,7 +23,7 @@
         <td>@movie.Title</td>
         <td>@movie.Director</td>
         <td>@movie.ReleaseDate.Year/@movie.ReleaseDate.Month/@movie.ReleaseDate.Day</td>
-        <td><button type="button" class="btn btn-primary">Edit</button></td>
+        <td><button type="button" class="btn btn-primary" @onclick="() => OnEdit(movie.Title)">Edit</button></td>
         <td><button type="button" class="btn btn-danger" @onclick="() => OnDelete(movie.Title)">Delete</button></td>
     </tr>
     }
@@ -33,6 +34,8 @@
 
 @code {
     private List<Movie> movies;
+    private String selectedMovieTitle;
+    
     protected override void OnInitialized()
     {
         movies = MovieLogic.GetMovies();
@@ -41,5 +44,12 @@
     private void OnDelete(String title)
     {
         MovieLogic.DeleteMovie(title);
+    }
+    
+    private void OnEdit(String title)
+    {
+        selectedMovieTitle = title;
+        NavigationManager.NavigateTo("/edit-movie/"+selectedMovieTitle);
+
     }
 }
