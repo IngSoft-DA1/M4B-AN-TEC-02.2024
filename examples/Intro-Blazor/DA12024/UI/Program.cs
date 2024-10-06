@@ -1,5 +1,4 @@
 using BusinessLogic;
-using BusinessLogic.DataAccess;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 
@@ -8,8 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
-builder.Services.AddSingleton<MemoryDB>();
-builder.Services.AddScoped<MovieLogic>();
+builder.Services.AddSingleton<MovieLogic>();
 
 var app = builder.Build();
 

@@ -1,6 +1,6 @@
 ﻿@page "/movies"
 @using BusinessLogic
-@using BusinessLogic.Models
+@using Dtos
 @inject MovieLogic MovieLogic
 @inject NavigationManager NavigationManager
 
@@ -33,12 +33,16 @@
 
 
 @code {
-    private List<Movie> movies;
+    private List<MovieDto> movies;
     private String selectedMovieTitle;
     
     protected override void OnInitialized()
     {
         movies = MovieLogic.GetMovies();
+        foreach (var movie in movies)
+        {
+            movie.Director = "esto cambio?";
+        }
     }
 
     private void OnDelete(String title)

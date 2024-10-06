@@ -1,7 +1,8 @@
 ﻿@page "/create-movie"
 
 @using BusinessLogic
-@using BusinessLogic.Models
+@using Domain
+@using Dtos
 @inject MovieLogic MovieLogic
 @inject NavigationManager NavigationManager
 
@@ -29,11 +30,11 @@
 </body>
 
 @code {
-    private Movie movie;
+    private MovieDto movie;
 
     protected override void OnInitialized()
     {
-        movie = new Movie("", "", DateTime.Now);
+        movie = new MovieDto("", "", DateTime.Now);
     }
 
     private void OnSubmit()

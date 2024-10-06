@@ -1,7 +1,8 @@
 ﻿@page "/edit-movie/{movieTitle}"
 
 @using BusinessLogic
-@using BusinessLogic.Models
+@using Domain
+@using Dtos
 @inject MovieLogic MovieLogic
 @inject NavigationManager NavigationManager
 
@@ -31,14 +32,14 @@
 @code {
     [Parameter] public String movieTitle { get; set; }
 
-    private Movie movieToUpdate;
+    private MovieDto movieToUpdate;
 
     protected override void OnInitialized()
     {
         movieToUpdate = MovieLogic.SearchMovieByTitle(movieTitle);
     }
 
-    private void OnUpdate(Movie movieToUpdate)
+    private void OnUpdate(MovieDto movieToUpdate)
     {
         MovieLogic.UpdateMovie(movieToUpdate);
         NavigationManager.NavigateTo("/movies");

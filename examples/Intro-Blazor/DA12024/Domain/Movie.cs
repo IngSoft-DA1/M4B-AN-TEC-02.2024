@@ -1,5 +1,6 @@
-﻿namespace BusinessLogic.Models;
+﻿using Dtos;
 
+namespace Domain;
 public class Movie
 {
     public string Title { get; set; }
@@ -11,6 +12,17 @@ public class Movie
         Title = title;
         Director = director;
         ReleaseDate = releaseDate;
+    }
+    public Movie(MovieDto movieDto)
+    {
+        Title = movieDto.Title;
+        Director = movieDto.Director;
+        ReleaseDate = movieDto.ReleaseDate;
+    }
+
+    public MovieDto ToMovieDto()
+    {
+        return new MovieDto(Title, Director, ReleaseDate);
     }
 
     public override string ToString()
