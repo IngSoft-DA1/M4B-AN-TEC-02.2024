@@ -1,7 +1,7 @@
 ﻿@page "/create-movie"
 
 @using BusinessLogic
-@using BusinessLogic.Models
+@using Dtos
 @inject MovieLogic MovieLogic
 @inject NavigationManager NavigationManager
 
@@ -29,11 +29,14 @@
 </body>
 
 @code {
-    private Movie movie;
+    private MovieDto movie;
 
     protected override void OnInitialized()
     {
-        movie = new Movie("", "", DateTime.Now);
+        movie = new MovieDto();
+        movie.Title = "";
+        movie.Director = "";
+        movie.ReleaseDate = DateTime.Now;
     }
 
     private void OnSubmit()
@@ -41,7 +44,7 @@
         MovieLogic.AddMovie(movie);
         NavigationManager.NavigateTo("/movies");
     }
-    
+
     private void OnCancel()
     {
         NavigationManager.NavigateTo("/");

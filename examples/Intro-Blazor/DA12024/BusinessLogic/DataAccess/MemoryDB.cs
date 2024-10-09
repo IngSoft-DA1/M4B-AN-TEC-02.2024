@@ -1,4 +1,4 @@
-﻿using BusinessLogic.Models;
+﻿using Domain;
 
 namespace BusinessLogic.DataAccess;
 

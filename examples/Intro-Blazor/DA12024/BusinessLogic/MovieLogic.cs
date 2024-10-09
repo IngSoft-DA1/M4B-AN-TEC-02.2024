@@ -1,6 +1,7 @@
 ﻿using BusinessLogic.DataAccess;
 using BusinessLogic.Interfaces;
-using BusinessLogic.Models;
+using Domain;
+using Dtos;
 
 namespace BusinessLogic;
 
@@ -13,47 +14,70 @@ public class MovieLogic: IMovieLogic
         _memoryDB = memoryDB;
     }
     
-    public List<Movie> GetMovies()
+    public List<MovieDto> GetMovies()
     {
-        return _memoryDB.Movies;
+        List<MovieDto> moviesDTO = new List<MovieDto>();
+
+        foreach (var movie in _memoryDB.Movies)
+        {
+            moviesDTO.Add(MovieDto.FromEntity(movie));
+        }
+        return moviesDTO;
     }
 
-    public void AddMovie(Movie movie)
+    public void AddMovie(MovieDto movie)
     {
-        ValidateMovieTitle(movie.Title);
-        _memoryDB.Movies.Add(movie);
+        //ValidateMovieTitle(movie.Title);
+
+        _memoryDB.Movies.Add(movie.ToEntity());
     }
 
     public void DeleteMovie(string title)
     {
-        Movie movie = SearchMovieByTitle(title);
+        Movie movie = GetMovie(title);
         _memoryDB.Movies.Remove(movie);
     }
 
-    public void UpdateMovie(Movie movieToUpdate)
+    public void UpdateMovie(MovieDto movieToUpdate)
     {
         var movieToUpdateIndex = _memoryDB.Movies.IndexOf(_memoryDB.Movies.Find(m => m.Title == movieToUpdate.Title));
-        _memoryDB.Movies[movieToUpdateIndex] = movieToUpdate;
+
+        if (String.IsNullOrEmpty(movieToUpdate.Director))
+        {
+            throw new ArgumentException("Movie director cannot be empty or null");
+        }
+
+        _memoryDB.Movies[movieToUpdateIndex] = movieToUpdate.ToEntity();
     }
 
-    public Movie SearchMovieByTitle(String title)
+    public MovieDto SearchMovieByTitle(String title)
+    {
+        Movie movie = _memoryDB.Movies.FirstOrDefault(movie => movie.Title == title);
+        if (movie == null)
         {
-            Movie movie = _memoryDB.Movies.FirstOrDefault(movie => movie.Title == title);
-            if (movie == null)
-            {
-                throw new ArgumentException("Cannot find movie with this title");
-            }
-            return movie;
+            throw new ArgumentException("Cannot find movie with this title");
         }
+        return MovieDto.FromEntity(movie);
+    }
 
     private void ValidateMovieTitle(String title)
     {
-        foreach (var m in _memoryDB.Movies)
+        foreach (var movie in _memoryDB.Movies)
         {
-            if (m.Title == title)
+            if (movie.Title == title)
             {
-                throw new ArgumentException("Movie title already exists");
+                throw new ArgumentException("There`s a movie already defined with that title");
             }
         }
+    }
+
+    private Movie GetMovie(string title)
+    {
+        Movie movie = _memoryDB.Movies.FirstOrDefault(movie => movie.Title == title);
+        if (movie == null)
+        {
+            throw new ArgumentException("Cannot find movie with this title");
+        }
+        return movie;
     }
 }

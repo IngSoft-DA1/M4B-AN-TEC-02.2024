@@ -1,6 +1,6 @@
 ﻿@page "/movies"
 @using BusinessLogic
-@using BusinessLogic.Models
+@using Dtos
 @inject MovieLogic MovieLogic
 @inject NavigationManager NavigationManager
 
@@ -33,23 +33,25 @@
 
 
 @code {
-    private List<Movie> movies;
+    private List<MovieDto> movies;
     private String selectedMovieTitle;
-    
+
     protected override void OnInitialized()
     {
         movies = MovieLogic.GetMovies();
+        selectedMovieTitle = "";
     }
 
     private void OnDelete(String title)
     {
         MovieLogic.DeleteMovie(title);
+        NavigationManager.NavigateTo(NavigationManager.Uri, true);
     }
-    
+
     private void OnEdit(String title)
     {
         selectedMovieTitle = title;
-        NavigationManager.NavigateTo("/edit-movie/"+selectedMovieTitle);
-
+        NavigationManager.NavigateTo("/edit-movie/" + selectedMovieTitle);
     }
+
 }
