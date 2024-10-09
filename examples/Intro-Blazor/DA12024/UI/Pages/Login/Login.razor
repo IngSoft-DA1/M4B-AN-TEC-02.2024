@@ -1,0 +1,42 @@
+﻿@page "/login"
+@using System.ComponentModel.DataAnnotations
+@using BusinessLogic
+@using Dtos
+@inject NavigationManager NavigationManager
+@inject SessionLogic SessionLogic
+
+<h1>Login</h1>
+
+<EditForm Model="@userLoginDTO" OnValidSubmit="HandleLogin">
+    <DataAnnotationsValidator />
+
+    <div class="form-group">
+        <label for="email">Email:</label>
+        <InputText id="email" @bind-Value="userLoginDTO.Email" class="form-control" />
+        <ValidationMessage For="@(() => userLoginDTO.Email)" />
+    </div>
+
+    <div class="form-group">
+        <label for="password">Password:</label>
+        <InputText id="password" @bind-Value="userLoginDTO.Password" type="password" class="form-control" />
+        <ValidationMessage For="@(() => userLoginDTO.Password)" />
+    </div>
+
+    <button type="submit" class="btn btn-primary mt-4">Login</button>
+</EditForm>
+
+
+@code {
+    private UserLoginDto userLoginDTO;
+
+    protected override void OnInitialized()
+    {
+        userLoginDTO = new UserLoginDto("","");
+    }
+
+    private async Task HandleLogin()
+    {
+        SessionLogic.Login(userLoginDTO.Email, userLoginDTO.Password);
+        NavigationManager.NavigateTo("/");
+    }
+}
