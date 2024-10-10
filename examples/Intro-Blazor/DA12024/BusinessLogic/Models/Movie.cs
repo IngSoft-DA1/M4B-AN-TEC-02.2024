@@ -1,7 +1,12 @@
-﻿namespace BusinessLogic.Models;
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace BusinessLogic.Models;
 
 public class Movie
 {
+    public int Id { get; set; }
+    
+    [MaxLength(30)]
     public string Title { get; set; }
     public string Director { get; set; }
     public DateTime ReleaseDate { get; set; }
